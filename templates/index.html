@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Team Data</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 2rem auto; max-width: 640px; color: #222; }
+    h1 { font-size: 1.4rem; }
+    table { border-collapse: collapse; width: 100%; margin-top: 1rem; }
+    th, td { border: 1px solid #ddd; padding: .5rem .75rem; text-align: left; }
+    th { background: #f5f5f5; }
+    button { padding: .45rem .9rem; cursor: pointer; }
+    #status { color: #777; font-size: .9rem; }
+  </style>
+</head>
+<body>
+  <h1 id="title">Loading...</h1>
+  <button id="reload">Reload data</button>
+  <p id="status"></p>
+
+  <table>
+    <thead>
+      <tr><th>Name</th><th>Role</th><th>Tests done</th></tr>
+    </thead>
+    <tbody id="rows"></tbody>
+  </table>
+
+  <script>
+    async function loadData() {
+      const status = document.getElementById("status");
+      status.textContent = "Fetching /api/data ...";
+      try {
+        const res = await fetch("/data");
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        const data = await res.json();
+
+        document.getElementById("title").textContent = data.title;
+        const rows = document.getElementById("rows");
+        rows.innerHTML = "";
+        for (const m of data.members) {
+          const tr = document.createElement("tr");
+          for (const value of [m.name, m.role, m.tests_done]) {
+            const td = document.createElement("td");
+            td.textContent = value;
+            tr.appendChild(td);
+          }
+          rows.appendChild(tr);
+        }
+        status.textContent = data.members.length + " records loaded.";
+      } catch (err) {
+        status.textContent = "Failed to load data: " + err.message;
+      }
+    }
+
+    document.getElementById("reload").addEventListener("click", loadData);
+    loadData();
+  </script>
+</body>
+</html>
