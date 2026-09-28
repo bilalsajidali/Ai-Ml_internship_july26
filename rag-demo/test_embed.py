@@ -9,12 +9,12 @@ embed_model = HuggingFaceEmbedding(model_name="BAAI/bge-small-en")
 # Embed three sentences
 v1 = embed_model.get_text_embedding("I love cats")
 v2 = embed_model.get_text_embedding("I adore cats")
-v3 = embed_model.get_text_embedding("Pakistan won the match")
+v3 = embed_model.get_text_embedding("Pakistan loss the match")
 
 # Print first 5 numbers of each vector
 print("I love cats:          ", v1[:5])
 print("I adore cats:         ", v2[:5])
-print("Pakistan won the match:", v3[:5])
+print("Pakistan loss the match:", v3[:5])
 
 # Print total size
 print("\nTotal numbers per sentence:", len(v1))
@@ -28,4 +28,4 @@ v3 = np.array(v3).reshape(1, -1)
 # Compare
 print("\nSimilarity scores:")
 print("'I love cats' vs 'I adore cats':          ", round(cosine_similarity(v1, v2)[0][0], 4))
-print("'I love cats' vs 'Pakistan won the match':", round(cosine_similarity(v1, v3)[0][0], 4))
+print("'I love cats' vs 'Pakistan loss the match':", round(cosine_similarity(v1, v3)[0][0], 4))

@@ -29,7 +29,7 @@ query_engine = index.as_query_engine(
 
 # Ask a question about your PDF
 print("Querying...\n")
-response = query_engine.query("when was apple founded?")
+response = query_engine.query("when was macintosh launched?")
 
 print("Answer:", response)
 

@@ -1,0 +1,341 @@
+<!--
+============================================================
+  Web Basics Practice Test 5 — Muhammad Bilal Sajid
+  Topics covered:
+    HTML · CSS · JavaScript · Git & GitHub
+
+  Instructions:
+    - Fill in every spot marked with:  YOUR CODE HERE
+    - Do NOT delete any existing code or question comments
+    - Save a copy as  test5-<yourname>.html
+    - Open the file in your browser to check it works
+      (press F12 → Console to see your console.log output)
+    - Section 4 (GitHub) answers go inside the comment block
+      at the bottom of this file
+============================================================
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Q1. Give this page the title:  My Test 5 Page -->
+  <!-- YOUR CODE HERE -->
+
+
+  <style>
+    /* ──────────────────────────────────────────────────────────
+       SECTION 2 — CSS
+       ────────────────────────────────────────────────────────── */
+
+    /* Q13. Give the whole page (body) the font  Arial, sans-serif
+            and a light grey background:  #f4f4f4 */
+    /* YOUR CODE HERE */
+
+
+    /* Q14. Make every  h1  dark blue (#1a3d7c) and centered. */
+    /* YOUR CODE HERE */
+
+
+    /* Q15. Style the element with  id="intro"  so its text is
+            18px and italic. */
+    /* YOUR CODE HERE */
+
+
+    /* Q16. Style every element with  class="card"  to have:
+              - a white background
+              - 16px padding
+              - a 1px solid #ccc border
+              - 8px rounded corners
+              - 12px margin at the bottom */
+    /* YOUR CODE HERE */
+
+
+    /* Q17. When the mouse hovers over any  a  (link), change its
+            color to red and remove the underline.  (Use :hover) */
+    /* YOUR CODE HERE */
+
+
+    /* Q18. Make the element with  class="row"  a flexbox that places
+            its children side by side with a 10px gap between them. */
+    /* YOUR CODE HERE */
+
+
+    /* Q19. Give the  button  a green background, white text,
+            no border, 10px 20px padding, and a pointer cursor. */
+    /* YOUR CODE HERE */
+
+
+    /* Q20. Create a class  .hidden  that hides an element completely
+            (it should take up no space on the page). */
+    /* YOUR CODE HERE */
+
+
+    /* Q21. Using a media query, when the screen is 600px wide or
+            smaller, make  .row  stack its children vertically. */
+    /* YOUR CODE HERE */
+
+
+  </style>
+</head>
+<body>
+
+  <!-- ──────────────────────────────────────────────────────────
+       SECTION 1 — HTML
+       ────────────────────────────────────────────────────────── -->
+
+  <!-- Q2. Add a main heading (h1) that says:  Welcome to Test 5 -->
+  <!-- YOUR CODE HERE -->
+
+
+  <!-- Q3. Add a paragraph with  id="intro"  that says:
+           This page tests HTML, CSS and JavaScript. -->
+  <!-- YOUR CODE HERE -->
+
+
+  <!-- Q4. Add a link to  https://github.com  with the text  Visit GitHub
+           that opens in a NEW tab. -->
+  <!-- YOUR CODE HERE -->
+
+
+  <!-- Q5. Add an image using  https://picsum.photos/200
+           with the alt text  Random photo  and a width of 200. -->
+  <!-- YOUR CODE HERE -->
+
+
+  <!-- Q6. Add an UNORDERED list of three languages:
+           HTML, CSS, JavaScript -->
+  <!-- YOUR CODE HERE -->
+
+
+  <!-- Q7. Add an ORDERED list of three steps:
+           Write code, Commit, Push -->
+  <!-- YOUR CODE HERE -->
+
+
+  <!-- Q8. Add a table with a header row  Name | Role
+           and two data rows:
+             Bilal    | Intern
+             Abdullah | Intern -->
+  <!-- YOUR CODE HERE -->
+
+
+  <!-- Q9. Create a  div  with  class="row"  that contains THREE divs,
+           each with  class="card".  Put the text  Card 1, Card 2,
+           Card 3  inside them. -->
+  <!-- YOUR CODE HERE -->
+
+
+  <!-- Q10. Build a form with  id="signup-form"  that contains:
+              - a label "Name:" and a text input with  id="name"
+              - a label "Email:" and an email input with  id="email"
+              - a button with the text  Submit
+            Make sure each label is connected to its input (use "for"). -->
+  <!-- YOUR CODE HERE -->
+
+
+  <!-- Q11. Add an empty paragraph with  id="output"
+            (JavaScript will write into it later). -->
+  <!-- YOUR CODE HERE -->
+
+
+  <!-- Q12. In one sentence inside an HTML comment below, explain the
+            difference between a  block  element (like div) and an
+            inline  element (like span). -->
+  <!-- YOUR CODE HERE -->
+
+
+  <!-- Extra elements used by the JavaScript section (do not delete) -->
+  <button id="counter-btn">Clicked 0 times</button>
+  <p id="secret" class="hidden">You found the secret message!</p>
+  <button id="toggle-btn">Show / Hide secret</button>
+
+
+  <script>
+    // ──────────────────────────────────────────────────────────
+    // SECTION 3 — JavaScript
+    // ──────────────────────────────────────────────────────────
+
+    // Q22. Declare a  const  called  name  with your name,
+    //      and a  let  called  age  with your age.
+    //      Print both with console.log.
+    // YOUR CODE HERE
+
+
+
+    // Q23. Use a template literal to print:
+    //      "<name> is <age> years old"
+    // YOUR CODE HERE
+
+
+
+    // Q24. Print the type of  42,  "hello",  true  and  null
+    //      using  typeof.
+    // YOUR CODE HERE
+
+
+
+    // Q25. In a comment, explain the difference between  ==  and  ===.
+    //      Then print the result of  5 == "5"  and  5 === "5".
+    // YOUR CODE HERE
+
+
+
+    // Q26. Write a function  square(n)  that RETURNS n * n.
+    //      Print square(6).
+    // YOUR CODE HERE
+
+
+
+    // Q27. Rewrite square as an ARROW function called  squareArrow.
+    //      Print squareArrow(7).
+    // YOUR CODE HERE
+
+
+
+    // Q28. Create an array  nums = [3, 8, 1, 9, 4]
+    //      Use a  for...of  loop to print each number.
+    // YOUR CODE HERE
+
+
+
+    // Q29. Use  .map()  to create a new array with every number
+    //      in nums doubled. Print it.
+    // YOUR CODE HERE
+
+
+
+    // Q30. Use  .filter()  to keep only numbers greater than 3.
+    //      Print the result.
+    // YOUR CODE HERE
+
+
+
+    // Q31. Create an object  student  with keys  name, course, marks.
+    //      Print the student's course using dot notation.
+    // YOUR CODE HERE
+
+
+
+    // Q32. Write an if / else if / else that prints:
+    //        "A" if student.marks >= 80
+    //        "B" if student.marks >= 60
+    //        "C" otherwise
+    // YOUR CODE HERE
+
+
+
+    // Q33. Select the paragraph with  id="intro"  using
+    //      document.getElementById and change its text color to green.
+    // YOUR CODE HERE
+
+
+
+    // Q34. Counter button:
+    //      Every time  #counter-btn  is clicked, increase a counter
+    //      and update the button text to  "Clicked N times".
+    // YOUR CODE HERE
+
+
+
+    // Q35. Toggle button:
+    //      When  #toggle-btn  is clicked, show/hide  #secret
+    //      by toggling the  hidden  class  (classList.toggle).
+    // YOUR CODE HERE
+
+
+
+    // Q36. Form handling:
+    //      When  #signup-form  is submitted:
+    //        - stop the page from reloading  (event.preventDefault())
+    //        - read the name and email values
+    //        - if either is empty, write  "Please fill in all fields"
+    //          into  #output
+    //        - otherwise write  "Thanks, <name>! We will email <email>."
+    //          into  #output
+    // YOUR CODE HERE
+
+
+
+  </script>
+
+<!--
+  ──────────────────────────────────────────────────────────
+  SECTION 4 — Git & GitHub
+  Write your answers directly under each question.
+  ──────────────────────────────────────────────────────────
+
+  Q37. What is the difference between Git and GitHub?
+       YOUR ANSWER HERE:
+
+
+  Q38. Write the command to start a new Git repository in the
+       current folder.
+       YOUR ANSWER HERE:
+
+
+  Q39. Write the command to check which files have changed.
+       YOUR ANSWER HERE:
+
+
+  Q40. Write the TWO commands to stage ALL changes and then commit
+       them with the message  "Add test 5".
+       YOUR ANSWER HERE:
+
+
+  Q41. Write the command to see the history of commits.
+       YOUR ANSWER HERE:
+
+
+  Q42. Write the command to connect your local repo to a GitHub repo at
+       https://github.com/<you>/my-project.git  (name it origin).
+       YOUR ANSWER HERE:
+
+
+  Q43. Write the command to push the  main  branch to GitHub for the
+       first time (so future pushes only need  git push).
+       YOUR ANSWER HERE:
+
+
+  Q44. Write the command to download (copy) an existing GitHub repo
+       to your computer.
+       YOUR ANSWER HERE:
+
+
+  Q45. Write the command to get the latest changes from GitHub into
+       your local branch.
+       YOUR ANSWER HERE:
+
+
+  Q46. Write the command to create a new branch called  feature-login
+       AND switch to it in one step.
+       YOUR ANSWER HERE:
+
+
+  Q47. What is a Pull Request, and why do teams use them?
+       YOUR ANSWER HERE:
+
+
+  Q48. What is a merge conflict, and how do you fix one?
+       YOUR ANSWER HERE:
+
+
+  Q49. What is the  .gitignore  file used for? Give one example of
+       something that should go in it for a Python project.
+       YOUR ANSWER HERE:
+
+
+  ──────────────────────────────────────────────────────────
+  BONUS — Putting it together
+  ──────────────────────────────────────────────────────────
+
+  Q50. Publish this page with GitHub Pages:
+         1. Put your finished file in a new public repo as  index.html
+         2. Turn on GitHub Pages in the repo Settings
+         3. Paste your live page URL below
+       YOUR ANSWER HERE:
+
+-->
+</body>
+</html>
