@@ -17,7 +17,7 @@
 
 # Q1. Print the message:  Hello, I am learning Python!
 # YOUR CODE HERE
-  print ("Hello, I am learning Python!")
+print ("Hello, I am learning Python!")
 
  
 # Q2. Python uses indentation to define blocks.
@@ -47,9 +47,8 @@ print("Python", end="")
 print("Rocks")
 
 # Q5. Use print() with sep argument to produce:  one | two | three
-print("one", "two", "three", sep=???)   # <-- replace ??? with correct separator
+print ("one", "two", "three", sep=" | " )   
 
-print("one", "two", "Three", sep=" | ")
 
 print("\n--- Section 1: Syntax & Output done ---\n")
 
@@ -95,16 +94,13 @@ age=20
 
 # Q11. Create variable  is_intern  and set it to True.
 # YOUR CODE HERE
-is_intern = true 
+is_intern = True
 
 # Q12. Print all three variables on separate lines.
 # YOUR CODE HERE
-name ="Areesha"
 print(name)
-age = 20
 print(age)
-is-separate = true 
-print (is_intern)
+print(is_intern)
 
 # Q13. Assign THREE variables in ONE line:  x = 10, y = 20, z = 30
 # YOUR CODE HERE
@@ -117,10 +113,10 @@ a=b=c=0
 # Q15. Create  color = "red"  and  Color = "blue" , print both.
 #      (shows that Python variable names are case-sensitive)
 # YOUR CODE HERE
-color="red"
-color = "blue"
+color = "red"
+Color = "blue"
 print(color)
-print(color)
+print(Color)
 
 # Q16. Without running it, what error would this cause?  print(city)
 #      Write the error name as a comment.
@@ -129,7 +125,7 @@ print(color)
 
 # Q17. Use  del  to delete variable  y  from Q13, then print "y deleted".
 # YOUR CODE HERE
-x,y,z=0
+x, y, z = 10, 20, 30
 del y
 print("y deleted")
 
@@ -144,9 +140,9 @@ print("--- Section 3: Variables done ---\n")
 #      str, int, float, bool, list, tuple, dict, set
 # YOUR CODE HERE
 #string
-F.name = "Areesha"
-L.name ="Asif"
-print(type(F.name + " " + L.name))
+F_name = "Areesha"
+L_name = "Asif"
+print(type(F_name + " " + L_name))
 #int
 age = 20
 print(type(age))
@@ -164,21 +160,23 @@ names = ("Areesha" , "Ayesha" , "Asif" )
 print(type(names))
 #dictionaries
 student = {
-"name": "Areesha"
-"age":20 }
+"name": "Areesha",
+"age": 20
+}
+print(type(student))
 # set 
-a = {1,2,3.4,4}    (no repetition)
+a = {1,2,3.4,4}    # no repetition
 print(type(a))
 
 
 
 # Q19. Print the type of  3.14
 # YOUR CODE HERE
-print(type(3.14)
+print(type(3.14))
 
 # Q20. Create  fruits = ["apple", "banana", "mango"]  and print its type.
 # YOUR CODE HERE
-list is the data type 
+#list is the data type 
 fruits = ["apple", "banana", "mango"]
 print(type(fruits))
 
@@ -230,7 +228,9 @@ print(abs(-456))
 
 # Q28. Use  pow(2, 8)  and print the result.
 # YOUR CODE HERE
-print(pow(3,8))
+print(pow(2, 8))
+
+import math
 
 # Q29. Import math and:
 #      a) Print square root of 144
@@ -364,13 +364,14 @@ print("My name is {} and I am {} years old.".format(name, age))
 first = "Hello"
 second = "World"
 # YOUR CODE HERE  → expected output: HelloWorld
+print(first + second)
 
 
 # Q53. Print first and second with a space between using concatenation.
 # YOUR CODE HERE  → expected output: Hello World
 first = "Hello"
 second = "World"
-print(first + second)
+print(first + " " + second)
 
 # Q54. Repeat "Ha" five times using the * operator.
 # YOUR CODE HERE  → expected output: HaHaHaHaHa
