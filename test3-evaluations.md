@@ -15,6 +15,8 @@
 | Zeeshan  | `test3-zeeshan.py`  | 25/25 + Bonus | A+ | ✅ | All correct; several required strings misspelled |
 | Mahad    | `test3-mahad.py`    | 24/25 + Bonus | A  | ✅ | Q22 pattern collapsed onto one line |
 | Zarmeen  | `test3-zarmeen.py`  | 23/25 + Bonus | B+ | ✅ | Q20 prints "rabbit"; Q25 didn't use comprehensions |
+| Shajee   | `test3-shajee.py`   | 22/25 + Bonus | B  | ✅ | Q2 uses `>` (boundaries wrong); Q18 doesn't print numbers; Q25 no comprehensions |
+| Tabraiz  | `test3-tabraiz.py`  | 20/25 + Bonus | C+ | ✅ | Q8 `"quite"` typo; Q10 prints 100 lines; Q11 off by one; Q20 no loop; Q25 no comprehensions |
 
 **All four files run to completion with no errors, and all four bonus sections produce the correct statistics** (Average `69.6`, Highest `95`, Lowest `45`, Passed `8`, Failed `2`). This is the strongest round so far — the whole group is now finishing the paper.
 
@@ -193,6 +195,76 @@ None of these cost a mark, because the logic is right in every case. But an auto
 
 ---
 
+## Shajee — 22/25 + Bonus ✅ (Grade: B)
+
+*Evaluated 2026-10-08 (late submission).*
+
+**Runs clean, and both parts of the bonus are correct.** Your loop work is solid. The three lost marks are a boundary bug, a skipped instruction, and the same comprehension miss as Zarmeen.
+
+**Problems**
+- **Q2 — `>` instead of `>=`.** `if score > 90` … `elif score > 70` gives the right answer for 72, but the rules say "90 *and above*". With your code, 90 → `B`, 80 → `C`, 70 → `D`, and 60 → `F`. Every boundary score lands one grade too low. Trace the edge values, not just the given one. *(–1)*
+- **Q18 — numbers not printed.** `range(1, 20)` with a `print(i)` only inside the `if`, so the output is just `15` and the message. The question asked to print each number *before* breaking. Move `print(i)` below the `if`, and use `range(1, 21)` for 1–20. *(–1)*
+- **Q25 — no list comprehensions.** Both parts use a regular `for` loop. Part b) also prints `6 12 18 24 ` with `end=" "` and no newline, which glues `--- Section 4: For Loops done ---` onto the same line. *(–1)*
+  ```python
+  print([i ** 2 for i in range(1, 11)])
+  print([n for n in source if n % 2 == 0])
+  ```
+
+**Spelling (costs a mark from Test 4 onward)**
+- **Q1:** `"Temparature is normal."` should be *Temperature*.
+
+**Minor notes**
+- **Q20:** the comment says `pass` "works like continue". It doesn't. `pass` does nothing at all, and it's your `else` that skips the print for "rabbit". With `continue`, the loop jumps to the next item immediately.
+- **Q21:** `print("Odd found: ", number)` gives a double space (`Odd found:  17`), because `print` already adds a space between arguments. Drop the space inside the quotes, or use an f-string.
+
+**Strengths**
+- Q11 increments *before* `continue`, so there's no infinite loop.
+- Q22's pattern is correct: inner loop with `end=""` and a bare `print()` at the outer level.
+- Both `match` statements are correct, including `|`.
+- Bonus Part B seeds `highest`/`lowest` from `scores[0]`, which is the right way. All five statistics are correct: 69.6 / 95 / 45 / 8 / 2.
+
+**Verdict:** Good control flow. To move up a grade, test your conditions at the boundary values, and follow every part of the instruction (Q18 asked for two things).
+
+---
+
+## Tabraiz — 20/25 + Bonus ✅ (Grade: C+)
+
+*Evaluated 2026-10-08 (late submission).*
+
+**Runs clean and the bonus is right**, but five answers print the wrong output. Most of them come from where a line sits relative to a loop.
+
+**Problems**
+- **Q8 — typo breaks the match.** `case "quite" | "exit" | "q":`. Because `command = "quit"` matches none of those, the output is `Unknown command`. *(–1)*
+- **Q10 — prints 100 lines.** `print(total)` is indented inside the `while`, so every running total prints. It should be one level out, after the loop, to print just `5050`. *(–1)*
+- **Q11 — off by one.** `numbers += 1` happens *before* the check and print, so the output is `2 3 4 6 7 8 9 10 11`: `1` is missing and `11` is extra. Increment at the bottom of the loop, and also inside the `if` before `continue`. *(–1)*
+- **Q20 — there's no loop.** `if animal in animals:` reuses the leftover `animal` from Q15 (`"fish"`), so it just prints `"rabbit"` once. The question asked to loop and skip rabbit: *(–1)*
+  ```python
+  for animal in animals:
+      if animal == "rabbit":
+          pass   # placeholder: does nothing
+      else:
+          print(animal)
+  ```
+- **Q25 — no comprehensions, and b) only works by luck.** `n%2 != 0` on its own line is an expression whose result is thrown away. Then `source.remove(n)` runs on *every* item while the list is being looped over, which makes Python skip every other element. It happens to leave `[6, 12, 18, 24]`. Same lesson as Zarmeen: never change a list while looping over it. *(–1)*
+
+**Spelling (costs a mark from Test 4 onward)**
+- Q3 `"positve"`, Q5 `"small"`, Q6 `"Welcome,Admin!"` / `"Welcome,User!"` (missing space), Q13 `"Loop Finished"`, Q21 `"odd found:"` / `"No odd numbers foound"`.
+
+**Minor notes**
+- **Bonus Part B:** `highest_score = 0` / `lowest_score = 100` only works because scores fall between 0 and 100. Seed both from `scores[0]`.
+- **Q21:** the `if` body is indented with 1 space. Use 4 everywhere.
+- The variable name `coount_failed` is a typo.
+
+**Strengths**
+- Q2's grade ladder is correct, with `>=` at each boundary.
+- Q12 (`while True` + `break`) is exactly right.
+- Q22's staircase is correct, and Q23 prints the grid as a real 3×3 using the same row/`print()` idea.
+- FizzBuzz is correct, with the combined case tested first.
+
+**Verdict:** You know the syntax. What's missing is checking where each line sits in the loop: Q10 and Q11 each come down to one line in the wrong place. After you write a loop, read out the first two and last two values it prints.
+
+---
+
 ## Overall Observations
 
 - **Everyone finished, everyone's file runs, and all four bonuses are numerically correct.** Test 1 → Test 2 → Test 3 is a clear upward line for the whole group.
@@ -204,3 +276,4 @@ None of these cost a mark, because the logic is right in every case. But an auto
 - **`if flag == True:` → `if flag:`.** Three of you wrote the long form. A boolean is already the condition.
 - **Keep the provided file intact** (Abdullah, second reminder). Fill in under `# YOUR CODE HERE`; don't delete the question text.
 - **Seed min/max from the data, not from guessed bounds** — `highest = scores[0]`, not `highest = 0`.
+- **Late submissions (2026-10-08) — Shajee and Tabraiz.** Both bonuses are numerically correct. Both missed the comprehension in Q25. Tabraiz's Q25b used the same remove-while-iterating pattern as Zarmeen, and it gives the right answer by coincidence only.

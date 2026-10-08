@@ -13,6 +13,8 @@
 | Abdullah | `test2_abdullah.py` | 72/72 + Bonus | A+ | ✅ | All answers correct, but the question comments were deleted |
 | Zeeshan  | `test2-zeeshan.py`  | 71/72 + Bonus | A  | ✅ | Only Q34 used a string literal instead of comments |
 | Zarmeen  | `test2-zarmeen.py`  | 66/72, Bonus partial | B- | ✅ | Big improvement over Test 1; 6 answers wrong or not printed |
+| Tabraiz  | `test2_tabraiz.py`  | 68/72 + Bonus | B+ | ✅ | Q42 prints the whole tuple; Q58, Q69, Q71 skip part of the question |
+| Shajee   | `test2-shajee.py`   | 65/72 + Bonus | C+ | ❌ | `SyntaxError` on line 166 (Q12), so the file won't start; `print(set.remove(...))` prints `None` |
 
 **All four files run to completion with no errors.** Everyone submitted this time — a clear step up from Test 1.
 
@@ -189,6 +191,70 @@ print(f"Marks     :   {', '.join(map(str, report['marks']))}")
 
 ---
 
+## Tabraiz — 68/72 + Bonus ✅ (Grade: B+)
+
+*Evaluated 2026-10-08 (late submission).*
+
+**Solid paper that runs clean.** Sections 1–3 (booleans, operators, lists) are fully correct. All four lost marks come from doing *part* of a question.
+
+**Problems**
+- **Q42 — prints the whole tuple six times.** `for color in colors: print(colors)` prints `colors` (the tuple) where it should print `color` (the loop variable). *(–1)*
+- **Q58 — `.get()` not used.** `print(student["city"])` gives the right value, but the question was specifically about `student.get("city")`. *(–1)*
+- **Q69 — returned value not printed.** `student.pop("is_intern")` throws the returned value away, and then the whole dict is printed. Required: `print(student.pop("is_intern"))`. *(–1)*
+- **Q71 — age never changed.** The copy is made, but `student["age"] = 99` is missing, so the output is `23` / `23` and doesn't show that the copy is independent. *(–1)*
+
+**Minor notes (no deduction)**
+- **Q55 — `list = [1, 2, 2, ...]` shadows the built-in `list`.** Any later `list(...)` call in the file would crash with `TypeError: 'list' object is not callable`. Never name a variable `list`, `dict`, `set`, `str`, `sum`, or `max`.
+- **Q56:** `"age": "23"` and `"is_intern": "true"` are strings. Use `23` and `True`, the real types.
+- **Bonus formatting:** the logic is right (passed set and average 65.67), but the output has problems:
+  - `print("subjects:"",",",".join(...))` prints `subjects:, Math,Science,English`. The stray `"",""` got joined onto the label.
+  - Marks print as a tuple, `(80, 45, 72)`, instead of `80, 45, 72`.
+  - The report key `" Marks"` has a leading space, so `report["Marks"]` would be a `KeyError`.
+  ```python
+  print("Subjects:", ", ".join(report["subjects"]))
+  print("Marks   :", ", ".join(str(m) for m in report["marks"]))
+  ```
+
+**Strengths**
+- `sort()` and `reverse()` are used in place and the list is printed afterwards, which is exactly right.
+- Q34 is correct: `# TypeError` plus the reason (tuples are immutable).
+- Q46 actually adds "Bob" again and prints the set to show the duplicate disappears.
+- Q54 `{"Diana"}.issubset(team_a)` has the arguments the right way round.
+- Every set operation (Q50–Q53) is correct.
+
+**Verdict:** Good grasp of every data structure. Read each question to the end, because three of the four lost marks were a second instruction that got skipped.
+
+---
+
+## Shajee — 65/72 + Bonus ❌ doesn't run (Grade: C+)
+
+*Evaluated 2026-10-08 (late submission).*
+
+**The file does not start.** Line 166, `p = 6   q = 3`, is a `SyntaxError`. Python checks the whole file before running anything, so not even Q1 prints. I fixed that line in a scratch copy to mark the rest.
+
+**Problems**
+- **Q12 — syntax error, plus a wrong shift.** Two statements on one line need a newline or `;` between them: `p = 6; q = 3`. Also `p << 3` should be `p << 1`. *(–1)*
+- **Q27 — not printed.** `nums_copy` is created but never printed. *(–1)*
+- **Q34 — error name missing.** The explanation ("tuples are immutable") is right, but the error name `# TypeError` was not written. *(–1)*
+- **Q46 — not attempted in code.** "Bob" isn't added again and the set isn't printed. There's only the comment. *(–1)*
+- **Q47 / Q48 — prints `None`.** `print(team_a.remove("Charlie"))` prints `None`, because `remove()` and `discard()` change the set in place and return nothing. Call the method, *then* `print(team_a)`. *(–2)*
+- **Q54 — membership, not subset.** `"Diana" in team_a` checks whether one *element* is in the set. The question asked whether the *set* `{"Diana"}` is a subset: `{"Diana"}.issubset(team_a)`. *(–1)*
+
+**Minor notes (no deduction)**
+- **Q24 / Q25:** `sorted(cities)` and `cities[::-1]` print sorted/reversed *copies*, but `cities` itself never changes. The output satisfies the question, but these questions were about the in-place methods `cities.sort()` and `cities.reverse()`.
+- **Q42:** `print(color, "\n")` adds a blank line after every colour. A plain `print(color)` already ends the line.
+- **Q7:** e) and f) are printed in swapped order (`<=` before `>=`).
+- **Bonus:** the dict is named `info`, not `report`, and the label alignment is inconsistent (`Subjects   :` vs `Marks   :`).
+
+**Strengths**
+- The dictionaries section (Q56–Q72) is flawless, and Q71 labels both ages so the independence of the copy is obvious.
+- Sections 1 and 2 are correct apart from Q12.
+- The bonus is correct: passed = `{'Math', 'English'}`, average `65.67`. Using `", ".join(str(mark) for mark in ...)` for the marks line is the neatest formatting in the group.
+
+**Verdict:** The content is mostly a B paper, but a file that won't start shows nothing. **Run it before you submit.** Also remember that methods which change a collection (`remove`, `discard`, `sort`, `append`) return `None`, so call them first and print afterwards.
+
+---
+
 ## Overall Observations
 
 - **Everyone submitted, and everyone's file runs.** That's the biggest improvement over Test 1.
@@ -199,3 +265,4 @@ print(f"Marks     :   {', '.join(map(str, report['marks']))}")
 - **Read the key list carefully** — Q56 named five keys; missing one silently changes the answers to Q62, Q63, Q64 and Q67.
 - **Q16 note:** "index 1 to 3" is ambiguous; both `[1:3]` and `[1:4]` were accepted for everyone.
 - **Keep the provided file intact.** Fill in under each `# YOUR CODE HERE` and leave the question comments in place (see Abdullah's note).
+- **Late submissions (2026-10-08) — Tabraiz and Shajee.** Tabraiz's paper is solid but skips the second half of several questions (Q58, Q69, Q71). Shajee's has a `SyntaxError` and will not start, and Q47/Q48 hit the same "mutating methods return `None`" trap described above.
