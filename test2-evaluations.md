@@ -14,6 +14,7 @@
 | Zeeshan  | `test2-zeeshan.py`  | 71/72 + Bonus | A  | ✅ | Only Q34 used a string literal instead of comments |
 | Zarmeen  | `test2-zarmeen.py`  | 66/72, Bonus partial | B- | ✅ | Big improvement over Test 1; 6 answers wrong or not printed |
 | Tabraiz  | `test2_tabraiz.py`  | 68/72 + Bonus | B+ | ✅ | Q42 prints the whole tuple; Q58, Q69, Q71 skip part of the question |
+| Areesha  | `test2-areesha.py`  | 72/72 + Bonus | A- | ❌ | Every answer correct, but a deleted `#` on line 1 means the file won't start; also overwrote the shared `test2.py` |
 | Shajee   | `test2-shajee.py`   | 65/72 + Bonus | C+ | ❌ | `SyntaxError` on line 166 (Q12), so the file won't start; `print(set.remove(...))` prints `None` |
 
 **All four files run to completion with no errors.** Everyone submitted this time — a clear step up from Test 1.
@@ -93,6 +94,42 @@
   That's more advanced than the hint asked for, and the output matches the target format exactly.
 
 **Verdict:** Great turnaround from Test 1. One tiny fix and this is a perfect paper.
+
+---
+
+## Areesha — 72/72 + Bonus ❌ doesn't run (Grade: A-)
+
+*Evaluated 2026-10-16 (late submission).*
+
+**Every answer is correct, but the submitted file does not start.** The `#` at the start of line 1 has been deleted, so line 1 is ` ====...` (a space, then `=` signs). Python reads the whole file before running anything, so it stops with `IndentationError: unexpected indent` and not even Q1 prints. I put the `#` back in a scratch copy to mark the rest. It then runs to the end with no errors and every output is right.
+
+No question loses a mark, because the broken line is in the header and not in any answer. The grade drops from A+ to A- because a file that won't start shows nothing to whoever runs it.
+
+**Instructions not followed**
+- **Line 1 — header edited.** The template says **"Do NOT delete any existing code"**. One deleted character stops the whole file. Run `python test2-areesha.py` once more after your last edit, and after copying or renaming the file.
+- **The shared `test2.py` was overwritten.** Commit `549ee91` ("test2 completed - Areesha") put your answers into `test2.py` itself, which is the blank template everyone works from. That copy still has the `#` on line 1 and runs fine, so it looks like the character was lost when the work was copied into `test2-areesha.py`. Only ever commit your own `test2-<name>.py`, and leave the template untouched.
+
+**Minor notes (no deduction)**
+- **Q34:** `# Tuples cannot be changed after creation.` repeats the question rather than answering *why*. The word to use is **immutable**: a tuple is an immutable sequence, so it has no item assignment.
+- **Q37:** `counts_tuple` is already defined by the template right above `# YOUR CODE HERE`, so writing it again isn't needed.
+- **Q40:** your `colors` tuple already ended with `"purple"`, so the final tuple has it twice (`..., 'purple', 'purple')`). The code is right; just start with 5 colours that don't include the one you're about to add (Mahad had the same note).
+- **Q46:** the comment is right ("sets do not contain duplicate values"). Write `because`, not `bcz`, in code comments.
+- **Q56:** `"AI/ML Intership"` → `Internship`.
+
+**Strengths**
+- **Q22 / Q23 and Q47 / Q48 are exactly right.** `pop()` is printed because it *returns* the removed item, while `remove()`, `discard()`, `sort()`, and `reverse()` are called first and printed afterwards. That's the trap several papers fell into, and you avoided all of it.
+- Q34 names the error correctly as `# TypeError`. That fixes the Q16 mistake from Test 1.
+- Q54 uses `{"Diana"}.issubset(team_a)`, with the arguments in the right order.
+- Q71 shows `99` and `22`, which proves the copy is independent.
+- **The bonus is complete this time** (it was unfinished in Test 1). `report` has the exact required keys, `passed` is built with `zip()` and `>= 50`, the marks line uses `', '.join(map(str, ...))`, and the average prints as `65.67`. The output matches the target layout line for line.
+
+**Fix needed**
+```python
+# Line 1 — put the # back
+# ============================================================
+```
+
+**Verdict:** The content is a perfect paper. Run the exact file you are about to submit, and commit only your own file.
 
 ---
 
@@ -266,3 +303,4 @@ print(f"Marks     :   {', '.join(map(str, report['marks']))}")
 - **Q16 note:** "index 1 to 3" is ambiguous; both `[1:3]` and `[1:4]` were accepted for everyone.
 - **Keep the provided file intact.** Fill in under each `# YOUR CODE HERE` and leave the question comments in place (see Abdullah's note).
 - **Late submissions (2026-10-08) — Tabraiz and Shajee.** Tabraiz's paper is solid but skips the second half of several questions (Q58, Q69, Q71). Shajee's has a `SyntaxError` and will not start, and Q47/Q48 hit the same "mutating methods return `None`" trap described above.
+- **Late submission (2026-10-16) — Areesha.** All 72 answers and the bonus are correct, but the submitted file doesn't start because the `#` on line 1 was deleted. Like Shajee: **run the exact file you submit.** The shared `test2.py` template was also overwritten with her answers and needs restoring.

@@ -13,6 +13,7 @@
 |----------|---------------------|--------------|-------|--------------|-------|
 | Abdullah | `test3-abdullah.py` | 25/25 + Bonus | A+ | ✅ | All correct; question comments deleted again (2nd time) |
 | Zeeshan  | `test3-zeeshan.py`  | 25/25 + Bonus | A+ | ✅ | All correct; several required strings misspelled |
+| Areesha  | `test3-areesha.py`  | 25/25 + Bonus | A+ | ✅ | All correct; every required string exact; template intact |
 | Mahad    | `test3-mahad.py`    | 24/25 + Bonus | A  | ✅ | Q22 pattern collapsed onto one line |
 | Zarmeen  | `test3-zarmeen.py`  | 23/25 + Bonus | B+ | ✅ | Q20 prints "rabbit"; Q25 didn't use comprehensions |
 | Shajee   | `test3-shajee.py`   | 22/25 + Bonus | B  | ✅ | Q2 uses `>` (boundaries wrong); Q18 doesn't print numbers; Q25 no comprehensions |
@@ -67,6 +68,32 @@ None of these cost a mark, because the logic is right in every case. But an auto
 - Spacing like `temprature >37` and `score>=80` is legal but hard to read; put one space either side of every operator.
 
 **Verdict:** Full marks and the cleanest loop reasoning in the group. Fix the typing accuracy and you're at Abdullah's level.
+
+---
+
+## Areesha — 25/25 + Bonus ✅ (Grade: A+)
+
+*Evaluated 2026-10-16 (late submission).*
+
+**Every answer correct, and the file runs cleanly.** The question comments are all in place. Every string the question specified is printed exactly (`"Fever detected!"`, `"Temperature is normal."`, `"Negative"`, `"Entry allowed"`, `"Too many attempts."`, `"Found it! Stopping."`, `"No odd numbers found."`). So this paper would already lose nothing under the exact-string rule that starts in Test 4.
+
+**Strengths**
+- **Q22 staircase is correct.** The inner loop prints with `end=" "`, and the bare `print()` sits at the outer level, so each row ends properly.
+- **Q11 avoids the `continue` trap.** It increments *before* the `if number == 5: continue`, so the loop can't hang.
+- Q12 `while True` / `break` prints `Attempt 1: wrong`, `Attempt 2: wrong`, `Too many attempts.` exactly.
+- Q13 `while...else` and Q21 `for...else` are both correct.
+- Q20 uses `pass` with an `else` for the printing, so `"rabbit"` is genuinely skipped. That's the right way to show what `pass` does.
+- **Q25 uses real comprehensions for both parts.** Three of the six earlier papers missed this.
+- Part B seeds `highest`/`lowest` from `scores[0]` and counts the elements manually instead of using `len()`. All five statistics are correct (`69.6`, `95`, `45`, `8`, `2`).
+
+**Minor notes (no deduction)**
+- **Q5 — not one line.** The ternary is split over four lines (`print("Big"` / `if x > 10` / `else` / `"Small")`). It's a valid single expression, but the question asked for a one-liner: `print("Big" if x > 10 else "Small")`.
+- **Q4:** `has_id == True` → just `and has_id`. A boolean is already the condition.
+- **Q11:** `continue` is indented 5 spaces instead of 4. Python accepts it, but keep to 4.
+- **Q21 / Part B:** `numbers` and `scores` are already defined by the template right above `# YOUR CODE HERE`. Writing them again isn't needed.
+- Comment typo: `# Calcukating average`.
+
+**Verdict:** A perfect paper, and a clear step up from Tests 1 and 2: it's finished, it runs, and every string is exact. Keep it up.
 
 ---
 
@@ -277,3 +304,4 @@ None of these cost a mark, because the logic is right in every case. But an auto
 - **Keep the provided file intact** (Abdullah, second reminder). Fill in under `# YOUR CODE HERE`; don't delete the question text.
 - **Seed min/max from the data, not from guessed bounds** — `highest = scores[0]`, not `highest = 0`.
 - **Late submissions (2026-10-08) — Shajee and Tabraiz.** Both bonuses are numerically correct. Both missed the comprehension in Q25. Tabraiz's Q25b used the same remove-while-iterating pattern as Zarmeen, and it gives the right answer by coincidence only.
+- **Late submission (2026-10-16) — Areesha.** 25/25 with a correct bonus, both comprehensions correct, and every required string exact. It would lose nothing under the Test 4 exact-string rule.
