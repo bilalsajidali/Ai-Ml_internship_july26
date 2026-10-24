@@ -17,10 +17,11 @@
 # Q1. Create two variables:  is_raining = False   is_sunny = True
 #     Print both.
 # YOUR CODE HERE
-is_raining = False
-is_sunny = True
-print(is_raining)
-print(is_sunny)
+ is_raining = False
+ is_sunny = True
+
+ print(is_raining)
+ print(is_sunny)
 
 # Q2. Print the boolean result of these expressions (just print each one):
 #     a)  10 > 5
